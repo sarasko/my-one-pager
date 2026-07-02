@@ -79,7 +79,6 @@ onBeforeUnmount(() => observer?.disconnect());
     </nav>
   </header>
 
-  <!-- Left station rail: the primary desktop nav. Labels reveal on hover/focus. -->
   <nav
     aria-label="Sections"
     class="fixed left-6 top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-6 lg:flex"
