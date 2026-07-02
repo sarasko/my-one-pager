@@ -108,14 +108,14 @@ onBeforeUnmount(() => observer?.disconnect());
   <main class="mx-auto max-w-5xl px-6">
     <!-- Hero -->
     <section id="top" class="scroll-mt-20 pb-16 pt-16 sm:pt-24">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">
+        {{ profile.location }}
+      </p>
       <h1
         class="mt-5 font-display text-5xl font-semibold uppercase leading-[1.02] tracking-tight text-heading sm:text-7xl"
       >
         {{ profile.name }}
       </h1>
-      <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">
-        {{ profile.location }}
-      </p>
       <div class="mt-4 h-1 w-24 bg-mustard"></div>
       <p class="mt-6 max-w-2xl text-lg text-muted sm:text-xl">
         {{ profile.tagline }}
