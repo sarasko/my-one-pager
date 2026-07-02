@@ -32,7 +32,7 @@ export const profile = {
       "Vertinu aiškiai apibrėžtus uždavinius.",
       "Noriu grįžtamojo ryšio padedančio suprasti mano klaidas ir tobulėti.",
       "Tiesus ir nuoširdus bendravimas.",
-      "Manau geriau du kartus paklausti, nei spėlioti ar nesusikalbėti."
+      "Manau geriau du kartus paklausti, nei spėlioti ar nesusikalbėti.",
     ],
   },
 
@@ -80,7 +80,10 @@ export const profile = {
           label: "Taip pat nepraleidžiu",
           value: "Nürburgring 24h ir Le Mans 24h",
         },
-        { label: "Mėgstamiausios kategorijos", value: "GT3, GT1, Group B, Group C" },
+        {
+          label: "Mėgstamiausios kategorijos",
+          value: "GT3, GT1, Group B, Group C",
+        },
       ],
       entries: [
         "Teko lankytis Spa 24h ir Nürburgring 6h varžybose.",
@@ -99,7 +102,7 @@ export const profile = {
       entries: [
         "Labai mėgstu žaisti krepšinį, tačiau nuo mokyklos draugų rate trūko žmonių su tuo pačiu noru. Vis dar tikiuosi rasti galimybę išspręsti šią problemą",
         "Skvošą atradau prieš metus ir jau kurį laiką bent kartą į savaitę stengiuosi pažaisti.",
-        "Ar sportas ar ne galima diskutuoti, bet užsiimu sim racing'u. Tai mano būdas kažkiek prisiliesti prie autosporto.",
+        "Ar sportas ar ne - galima diskutuoti, bet užsiimu sim racing'u. Tai mano būdas kažkiek prisiliesti prie autosporto.",
       ],
     },
     {

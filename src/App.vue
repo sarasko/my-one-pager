@@ -32,35 +32,14 @@ onBeforeUnmount(() => observer?.disconnect());
 </script>
 
 <template>
-  <a
-    href="#top"
-    class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-accent focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:text-on-accent"
-  >
-    Skip to content
-  </a>
-
-  <!-- Top bar -->
+  <!-- Top bar: mobile nav only — desktop nav lives in the left rail below. -->
   <header
-    class="sticky top-0 z-40 border-b border-line bg-page/85 backdrop-blur"
+    class="sticky top-0 z-40 border-b border-line bg-page/85 backdrop-blur lg:hidden"
   >
     <div class="mx-auto flex max-w-5xl items-center justify-end px-6 py-4">
-      <nav aria-label="Sections" class="hidden gap-6 sm:flex">
-        <a
-          v-for="s in sections.slice(1)"
-          :key="s.id"
-          :href="`#${s.id}`"
-          class="font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-heading"
-          :class="{ 'text-accent hover:text-accent': active === s.id }"
-        >
-          {{ s.label }}
-        </a>
-      </nav>
-
-      <!-- Mobile nav toggle: the sm:flex nav above and the lg:flex rail below are both
-           hidden on small screens, so this is the only way to jump sections there. -->
       <button
         type="button"
-        class="flex cursor-pointer items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted sm:hidden"
+        class="flex cursor-pointer items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted"
         :aria-expanded="mobileNavOpen"
         aria-controls="mobile-nav"
         @click="mobileNavOpen = !mobileNavOpen"
@@ -86,7 +65,7 @@ onBeforeUnmount(() => observer?.disconnect());
       v-if="mobileNavOpen"
       id="mobile-nav"
       aria-label="Sections"
-      class="flex flex-col border-t border-line px-6 py-2 sm:hidden"
+      class="flex flex-col border-t border-line px-6 py-2"
     >
       <a
         v-for="s in sections.slice(1)"
@@ -101,16 +80,16 @@ onBeforeUnmount(() => observer?.disconnect());
     </nav>
   </header>
 
-  <!-- Left station rail (signature) -->
-  <aside
-    aria-hidden="true"
-    class="pointer-events-none fixed left-6 top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-6 lg:flex"
+  <!-- Left station rail: the primary desktop nav. Labels reveal on hover/focus. -->
+  <nav
+    aria-label="Sections"
+    class="fixed left-6 top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-6 lg:flex"
   >
     <a
       v-for="(s, i) in sections"
       :key="s.id"
       :href="`#${s.id}`"
-      class="pointer-events-auto flex items-center gap-3"
+      class="group -ml-2 flex items-center gap-3 rounded-full py-1.5 pl-2 pr-4 transition-colors duration-200 hover:bg-surface focus-visible:bg-surface"
     >
       <span class="font-mono text-[10px] tabular-nums text-faint">
         {{ String(i).padStart(2, "0") }}
@@ -119,8 +98,14 @@ onBeforeUnmount(() => observer?.disconnect());
         class="h-px transition-all duration-300"
         :class="active === s.id ? 'w-8 bg-accent' : 'w-4 bg-line'"
       />
+      <span
+        class="whitespace-nowrap font-mono text-xs uppercase tracking-widest text-muted opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100"
+        :class="{ 'text-accent': active === s.id }"
+      >
+        {{ s.label }}
+      </span>
     </a>
-  </aside>
+  </nav>
 
   <main class="mx-auto max-w-5xl px-6">
     <!-- Hero -->
@@ -162,7 +147,9 @@ onBeforeUnmount(() => observer?.disconnect());
     <!-- By day -->
     <section id="byday" :class="[ui.sectionBase, 'py-16']">
       <div class="mb-2 flex items-baseline gap-3">
-        <h2 :class="[ui.sectionHeading, 'text-3xl']">{{ profile.byDay.title }}</h2>
+        <h2 :class="[ui.sectionHeading, 'text-3xl']">
+          {{ profile.byDay.title }}
+        </h2>
       </div>
       <div class="mb-8 h-[3px] w-8 bg-mustard"></div>
 
