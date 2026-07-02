@@ -1,0 +1,39 @@
+{
+  "name": "one-pager (Vue + TS + Tailwind)",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+  "remoteUser": "node",
+
+  // Install deps once the container is created.
+  "postCreateCommand": "npm install",
+
+  // Vite dev server. forwardPorts surfaces it; the label is cosmetic.
+  "forwardPorts": [5173],
+  "portsAttributes": {
+    "5173": { "label": "Vite dev server", "onAutoForward": "openPreview" }
+  },
+
+  // Bring your host git identity + SSH keys into the container so you can
+  // commit and push from the integrated terminal with no extra setup.
+  // .ssh is mounted read-only; VS Code's Dev Containers extension also
+  // auto-forwards a running local ssh-agent, so an unlocked key on the host
+  // works here too.
+  "mounts": [
+    "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached,readonly"
+  ],
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Vue.volar",
+        "bradlc.vscode-tailwindcss",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  }
+}

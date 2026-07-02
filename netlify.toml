@@ -1,0 +1,13 @@
+# Netlify: connect the repo, or `netlify deploy --prod`. Zero extra setup.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# SPA-style fallback (harmless for this single page; future-proofs routing).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

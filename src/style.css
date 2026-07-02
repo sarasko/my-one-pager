@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+/* ---- Design tokens (Tailwind v4 CSS-first @theme) ------------------------
+   Vintage motorsport-poster palette: aged cream paper, warm ink, a vermilion
+   spot colour, ochre/mustard as the second ink, and British-racing-green for
+   headings. Components reference the ROLE tokens (fg, heading, accent, line…)
+   so re-colouring later means editing only this block.
+--------------------------------------------------------------------------- */
+@theme {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Poster inks */
+  --color-paper: #f3e9d2;      /* aged cream paper */
+  --color-ink: #262019;        /* warm near-black */
+  --color-red: #b23a2e;        /* vermilion spot colour */
+  --color-mustard: #cf9a2b;    /* ochre / gold */
+  --color-green: #2f4f3a;      /* British racing green */
+
+  /* Roles */
+  --color-page: #f3e9d2;
+  --color-surface: #ece0c2;    /* tinted panel */
+  --color-line: #cbb88d;       /* warm tan hairline */
+  --color-fg: #262019;         /* body text */
+  --color-heading: #2f4f3a;    /* headings (green) */
+  --color-muted: #5b5340;      /* secondary text */
+  --color-faint: #736a4f;      /* captions / labels */
+  --color-accent: #b23a2e;     /* links, ticks, primary action */
+  --color-accent-strong: #8f2c22;
+  --color-on-accent: #f6efdd;  /* text on the vermilion fill */
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--color-page);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings default to racing green; utilities still override via specificity. */
+h1, h2, h3, h4 {
+  color: var(--color-heading);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
