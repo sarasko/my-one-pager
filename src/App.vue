@@ -32,7 +32,6 @@ onBeforeUnmount(() => observer?.disconnect());
 </script>
 
 <template>
-  <!-- Top bar: mobile nav only — desktop nav lives in the left rail below. -->
   <header
     class="sticky top-0 z-40 border-b border-line bg-page/85 backdrop-blur lg:hidden"
   >
