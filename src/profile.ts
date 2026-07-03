@@ -94,7 +94,7 @@ export const profile = {
     {
       id: "sports",
       code: "Hobis-03",
-      image: "/sports.jpeg",
+      image: "/IMG_20231102_194421.jpg",
       title: "Sportas",
       lead: "Krepšinis ir skvošas - du dalykai, kuriems sunkiai galiu atsispirti.",
       meta: [{ label: "Mano komanda", value: "BC Kauno Žalgiris" }],
